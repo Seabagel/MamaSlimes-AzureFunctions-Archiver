@@ -30,5 +30,6 @@ module.exports = async function (context, req) {
     context.log("Status: 500 Internal Server Error");
   }
 
+  context.done();
   context.log("Creating Entry - finished");
 };
