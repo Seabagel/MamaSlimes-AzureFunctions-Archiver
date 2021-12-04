@@ -1,12 +1,13 @@
 module.exports = async function (context, req) {
   context.log("JavaScript HTTP trigger function processed a request.");
 
+  // Try reading the body
   try {
     const rb = req.body;
 
     if (rb.id && rb.username && rb.messageBody) {
       context.res = {
-        status: 201 /* Defaults to 200 */,
+        status: 201, // Success POST Created
         body: {
           id: rb.id,
           username: rb.username,
@@ -15,12 +16,14 @@ module.exports = async function (context, req) {
       };
     } else {
       context.res = {
-        status: 400 /* Defaults to 200 */,
+        status: 400, // Bad Request
       };
     }
+
+    // Catch Errors
   } catch (error) {
     context.res = {
-      status: 500,
+      status: 500, // Internal Server Error
     };
   }
 };
