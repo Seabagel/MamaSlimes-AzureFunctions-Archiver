@@ -8,6 +8,9 @@ module.exports = async function (context, req) {
     if (rb.id && rb.username && rb.messageBody) {
       context.res = {
         status: 201, // Success
+        headers: {
+          "content-type": "application/json",
+        },
         body: {
           id: rb.id,
           username: rb.username,
